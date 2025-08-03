@@ -9,7 +9,7 @@ function LocationCard() {
 
           <div className="d-flex d-column justify-content-between align-items-center gap-12">
               <div className="weather-container weather-container-snow"></div>
-              <div className="text-medium">14°</div>
+              <div className="text-large">14°</div>
           </div>
       </div>
   )

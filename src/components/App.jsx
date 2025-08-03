@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 function App() {
     const vapid = import.meta.env.VITE_API_KEY;
 
+    const [tempFormat, setTempFormat] = useState('celsius');
     const [city, setCity] = useState('Helsinki');
     const [toast, setToast] = useState({
         title: 'Error',
@@ -28,19 +29,19 @@ function App() {
     //         })
     // }, []);
 
-    useEffect(() => {
-        document.getElementById('toast-message').classList.remove('d-none');
+//useEffect(() => {
+//    document.getElementById('toast-message').classList.remove('d-none');
 
-        const timer = setTimeout(() => {
-            document.getElementById('toast-message').classList.add('d-none');
-        }, 5000)
+//    const timer = setTimeout(() => {
+//        document.getElementById('toast-message').classList.add('d-none');
+//    }, 5000)
 
-        return () => clearTimeout(timer);
-    }, [toast])
+//    return () => clearTimeout(timer);
+//}, [toast])
 
     return (
         <div className="container">
-          <SearchBar/>
+          <SearchBar tempFormat={tempFormat} setTempFormat={setTempFormat}/>
           <DayWeather />
           <WeekWeather />
           <div id="toast-message" className={`d-none toast toast-${toast.type}`}>
