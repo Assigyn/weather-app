@@ -2,7 +2,7 @@ function CityCard() {
   return (
       <div className="city-card d-flex d-column radius bg-gray gap-12">
           <div className="d-flex flex-row justify-content-between align-items-center w-100">
-              <div className="temperature text-large">- 1%</div>
+              <div className="temperature text-xl">- 1°</div>
               <div className="city text-right">
                   <div className="text-big">Helsinki</div>
                   <div className="text-regular">11:45 AM</div>
