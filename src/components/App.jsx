@@ -41,7 +41,7 @@ function App() {
 
     return (
         <div className="container">
-          <SearchBar tempFormat={tempFormat} setTempFormat={setTempFormat}/>
+          <SearchBar setCity={setCity} tempFormat={tempFormat} setTempFormat={setTempFormat}/>
           <DayWeather />
           <WeekWeather />
           <div id="toast-message" className={`d-none toast toast-${toast.type}`}>

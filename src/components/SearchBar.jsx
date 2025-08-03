@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-function SearchBar({tempFormat, setTempFormat}) {
+function SearchBar({setCity, tempFormat, setTempFormat}) {
  const radio = [
      {value: 'celsius', text: '°C'},
      {value: 'fahrenheit', text: '°F'},
@@ -26,8 +26,16 @@ function SearchBar({tempFormat, setTempFormat}) {
 
   }, [tempFormat])
 
+  function getCityValue(e) {
+      const value = e.target.value;
+
+      if (e.key === 'Enter') {
+          return value;
+      }
+  }
+
   return (
-      <div id="search-bar" className="d-flex flex-row w-100 justify-content-between align-items-center">
+      <div id="search-bar" className="d-flex flex-row w-100 justify-content-between align-items-center" onKeyDown={(e) => setCity(getCityValue(e))}>
           <div>
               <input id="search" type="text" placeholder="Search city...."/>
           </div>
