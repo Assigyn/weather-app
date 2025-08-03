@@ -23,14 +23,16 @@ function getCurrentTime(date = null) {
 }
 
 function regroupData(data) {
-    return data.reduce((acc, item) => {
+    let reduced = data.reduce((acc, item) => {
         const date = new Date(item.dt * 1000);
         const key = date.toISOString().split("T")[0]; // ex: "2025-01-03"
 
         acc[key] = item;
 
         return acc;
-    }, []);
+    }, {});
+
+    return Object.values(reduced);
 }
 
 

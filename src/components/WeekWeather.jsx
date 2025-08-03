@@ -1,15 +1,14 @@
 import LocationCard from "./Cards/LocationCard.jsx";
 import DayCard from "./Cards/DayCard.jsx";
 import Utils from "../Utils/Utils.js";
+import {useEffect, useState} from "react";
 
-function WeekWeather({weeklyData}) {
-  let weeksDay = [];
+function WeekWeather({weeklyData, tempFormat}) {
+  const [weeksDay, setWeeksDay] = useState([])
 
-  if (weeklyData.length > 0) {
-      weeksDay = Utils.regroupData(weeklyData)
-  }
-
-  console.log(weeksDay)
+    useEffect(() => {
+        setWeeksDay(Utils.regroupData(weeklyData).slice(0, 5))
+    }, [weeklyData]);
 
   return (
       <div className="d-flex d-row-reverse justify-content-between flex-auto gap-44">
@@ -26,7 +25,7 @@ function WeekWeather({weeklyData}) {
           <div className="d-flex d-column flex-auto">
               <h2>5 days forecast</h2>
               <div className="d-flex d-column gap-12">
-                  {weeksDay.map((datum, key) => { return <DayCard key={key} datum={datum} /> })}
+                  {weeksDay.map((datum, key) => { return <DayCard key={key} datum={datum} tempFormat={tempFormat} /> })}
               </div>
           </div>
       </div>
