@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 
 function App() {
     const vapid = import.meta.env.VITE_API_KEY;
+
     const [city, setCity] = useState('Helsinki');
     const [toast, setToast] = useState({
         title: 'Error',
@@ -13,22 +14,36 @@ function App() {
         type: 'error'
     });
 
-   // useEffect(() => {
-   //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
-   //         .then((response) => {
-   //             console.log(response)
-   //         })
-   //         .catch((response) => {
-   //             console.log(response.message)
-   //         })
-   // }, []);
+    // useEffect(() => {
+    //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
+    //         .then((response) => {
+    //             console.log(response)
+    //         })
+    //         .catch((response) => {
+    //             setToast({
+    //                 title: response.status,
+    //                 message: response.message,
+    //                 type: "error"
+    //             })
+    //         })
+    // }, []);
+
+    useEffect(() => {
+        document.getElementById('toast-message').classList.remove('d-none');
+
+        const timer = setTimeout(() => {
+            document.getElementById('toast-message').classList.add('d-none');
+        }, 5000)
+
+        return () => clearTimeout(timer);
+    }, [toast])
 
     return (
         <div className="container">
           <SearchBar/>
           <DayWeather />
           <WeekWeather />
-          <div className={`d-none toast toast-${toast.type}`}>
+          <div id="toast-message" className={`d-none toast toast-${toast.type}`}>
               <p className="toast-title">{toast.title}</p>
               <p>{toast.message}</p>
           </div>

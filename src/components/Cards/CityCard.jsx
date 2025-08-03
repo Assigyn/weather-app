@@ -10,7 +10,10 @@ function CityCard() {
           </div>
 
           <div className="d-flex flex-row justify-content-between align-items-center w-100">
-              <div>Snow</div>
+              <div className="d-flex d-row justify-content-between align-items-center gap-12">
+                  <div className="weather-container weather-container-snow"></div>
+                  <span className="text-small">Snow</span>
+              </div>
               <div>5.12 m/s</div>
           </div>
 
