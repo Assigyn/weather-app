@@ -1,4 +1,4 @@
-function DayCard() {
+function DayCard({datum}) {
   return (
       <div className="day-card d-flex d-row radius bg-gray justify-content-between align-items-center">
           <div>

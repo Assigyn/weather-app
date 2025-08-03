@@ -1,7 +1,16 @@
 import LocationCard from "./Cards/LocationCard.jsx";
 import DayCard from "./Cards/DayCard.jsx";
+import Utils from "../Utils/Utils.js";
 
-function WeekWeather() {
+function WeekWeather({weeklyData}) {
+  let weeksDay = [];
+
+  if (weeklyData.length > 0) {
+      weeksDay = Utils.regroupData(weeklyData)
+  }
+
+  console.log(weeksDay)
+
   return (
       <div className="d-flex d-row-reverse justify-content-between flex-auto gap-44">
           <div className="d-flex d-column">
@@ -17,11 +26,7 @@ function WeekWeather() {
           <div className="d-flex d-column flex-auto">
               <h2>5 days forecast</h2>
               <div className="d-flex d-column gap-12">
-                  <DayCard />
-                  <DayCard />
-                  <DayCard />
-                  <DayCard />
-                  <DayCard />
+                  {weeksDay.map((datum, key) => { return <DayCard key={key} datum={datum} /> })}
               </div>
           </div>
       </div>

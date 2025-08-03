@@ -8,22 +8,44 @@ function App() {
     const vapid = import.meta.env.VITE_API_KEY;
 
     const [tempFormat, setTempFormat] = useState('celsius');
-    const [city, setCity] = useState('Helsinki');
+    const [city, setCity] = useState('London');
     const [toast, setToast] = useState(null);
+    const [weatherData, setWeatherData] = useState([])
+    const [weeklyData, setWeeklyData] = useState([])
 
-  // useEffect(() => {
-  //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
-  //         .then((response) => {
-  //             console.log(response)
-  //         })
-  //         .catch((response) => {
-  //             setToast({
-  //                 title: response.status,
-  //                 message: response.message,
-  //                 type: "error"
-  //             })
-  //         })
-  // }, []);
+    useEffect(() => {
+        if (null !== city) {
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=${vapid}`)
+                .then((response) => {
+                    if (200 === response.status) {
+                        setWeatherData(response.data)
+                    }
+                })
+                .catch((response) => {
+                    setToast({
+                        title: response.status,
+                        message: response.message,
+                        type: "error"
+                    })
+                })
+        }
+    }, [city]);
+
+    useEffect(() => {
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid=${vapid}`)
+            .then((response) => {
+                if (200 === response.status) {
+                    setWeeklyData(response.data.list)
+                }
+            })
+            .catch((response) => {
+                setToast({
+                    title: response.status,
+                    message: response.message,
+                    type: "error"
+                })
+            })
+    }, [weatherData]);
 
     useEffect(() => {
         if (null !== toast) {
@@ -40,8 +62,8 @@ function App() {
     return (
         <div className="container">
           <SearchBar setCity={setCity} tempFormat={tempFormat} setTempFormat={setTempFormat}/>
-          <DayWeather />
-          <WeekWeather />
+          <DayWeather weatherData={weatherData} weeklyData={weeklyData} tempFormat={tempFormat}/>
+          <WeekWeather weeklyData={weeklyData} />
           <div id="toast-message" className={`d-none toast toast-${toast ? toast.type : 'error'}`}>
               {toast ? <p className="toast-title">{toast.title}</p> : null}
               {toast ? <p>{toast.message}</p> : null}

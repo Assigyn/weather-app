@@ -1,4 +1,5 @@
 @import "./variables.styl"
+@import "./mixins.styl"
 
 body
   background-color $bgColor
@@ -175,10 +176,10 @@ h2
   height 35px
   width 35px
   background-size contain
-  &-snow
-    background-image  url("../../assets/img/13d.png")
-    background-position 50% 50%
-    background-repeat no-repeat
+  background-position 50% 50%
+  background-repeat no-repeat
+
+weather-containers('01d' '02d' '03d' '04d' '09d' '10d' '11d' '13d' '50d')
 
 .progress
   width 100%
@@ -194,6 +195,7 @@ h2
 
 .hour-span
   border-bottom 1px solid $bgColor
+  word-break keep-all
 
 #radio-temperature
   background-color $greyBg
@@ -217,4 +219,3 @@ h2
   input
     opacity 0
     width 0
-

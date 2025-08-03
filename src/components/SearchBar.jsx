@@ -29,13 +29,17 @@ function SearchBar({setCity, tempFormat, setTempFormat}) {
   function getCityValue(e) {
       const value = e.target.value;
 
-      if (e.key === 'Enter') {
+      if (13 === e.keyCode && '' !== value) {
           return value;
       }
+
+      return null;
   }
 
   return (
-      <div id="search-bar" className="d-flex flex-row w-100 justify-content-between align-items-center" onKeyDown={(e) => setCity(getCityValue(e))}>
+      <div id="search-bar" className="d-flex flex-row w-100 justify-content-between align-items-center" onKeyDown={(e) => {
+          setCity(getCityValue(e));
+      }}>
           <div>
               <input id="search" type="text" placeholder="Search city...."/>
           </div>
