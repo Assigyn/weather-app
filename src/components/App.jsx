@@ -11,19 +11,19 @@ function App() {
     const [city, setCity] = useState('Helsinki');
     const [toast, setToast] = useState(null);
 
-    // useEffect(() => {
-    //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
-    //         .then((response) => {
-    //             console.log(response)
-    //         })
-    //         .catch((response) => {
-    //             setToast({
-    //                 title: response.status,
-    //                 message: response.message,
-    //                 type: "error"
-    //             })
-    //         })
-    // }, []);
+  // useEffect(() => {
+  //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
+  //         .then((response) => {
+  //             console.log(response)
+  //         })
+  //         .catch((response) => {
+  //             setToast({
+  //                 title: response.status,
+  //                 message: response.message,
+  //                 type: "error"
+  //             })
+  //         })
+  // }, []);
 
     useEffect(() => {
         if (null !== toast) {
