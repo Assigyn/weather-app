@@ -5,12 +5,12 @@ function DayCard() {
               <span className="text-big">Today</span>
           </div>
 
-          <div className="d-flex d-row align-items-center gap-12">
+          <div className="d-flex d-row align-items-center gap-12 w-50">
               <div className="weather-container weather-container-snow"></div>
               <span className="text-medium">Snow</span>
           </div>
 
-          <div className="d-flex d-row align-items-center gap-12">
+          <div className="d-flex d-row align-items-center gap-12 w-50">
               <div>-1°</div>
               <div className="progress">
                   <div className="progress-bar"></div>

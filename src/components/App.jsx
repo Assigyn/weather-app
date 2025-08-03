@@ -9,11 +9,7 @@ function App() {
 
     const [tempFormat, setTempFormat] = useState('celsius');
     const [city, setCity] = useState('Helsinki');
-    const [toast, setToast] = useState({
-        title: 'Error',
-        message: 'Error',
-        type: 'error'
-    });
+    const [toast, setToast] = useState(null);
 
     // useEffect(() => {
     //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
@@ -29,24 +25,26 @@ function App() {
     //         })
     // }, []);
 
-//useEffect(() => {
-//    document.getElementById('toast-message').classList.remove('d-none');
+    useEffect(() => {
+        if (null !== toast) {
+            document.getElementById('toast-message').classList.remove('d-none');
 
-//    const timer = setTimeout(() => {
-//        document.getElementById('toast-message').classList.add('d-none');
-//    }, 5000)
+            const timer = setTimeout(() => {
+                document.getElementById('toast-message').classList.add('d-none');
+            }, 5000)
 
-//    return () => clearTimeout(timer);
-//}, [toast])
+            return () => clearTimeout(timer);
+        }
+    }, [toast])
 
     return (
         <div className="container">
           <SearchBar setCity={setCity} tempFormat={tempFormat} setTempFormat={setTempFormat}/>
           <DayWeather />
           <WeekWeather />
-          <div id="toast-message" className={`d-none toast toast-${toast.type}`}>
-              <p className="toast-title">{toast.title}</p>
-              <p>{toast.message}</p>
+          <div id="toast-message" className={`d-none toast toast-${toast ? toast.type : 'error'}`}>
+              {toast ? <p className="toast-title">{toast.title}</p> : null}
+              {toast ? <p>{toast.message}</p> : null}
           </div>
         </div>
     )
