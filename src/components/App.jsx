@@ -8,15 +8,15 @@ function App() {
     const vapid = import.meta.env.VITE_API_KEY;
     const [city, setCity] = useState('Helsinki');
 
-    useEffect(() => {
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q="${city}"&appid="${vapid}"`)
-            .then((response) => {
-                console.log(response)
-            })
-            .catch((response) => {
-                console.log(response.message)
-            })
-    }, []);
+   // useEffect(() => {
+   //     axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=London&appid="${vapid}"`)
+   //         .then((response) => {
+   //             console.log(response)
+   //         })
+   //         .catch((response) => {
+   //             console.log(response.message)
+   //         })
+   // }, []);
 
     return (
         <div className="container">

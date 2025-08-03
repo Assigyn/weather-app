@@ -1,14 +1,19 @@
+import CityCard from "./Cards/CityCard.jsx";
+import HourCard from "./Cards/HourCard.jsx";
+
 function DayWeather() {
   return (
       <div className="d-flex flex-row w-100 justify-content-between">
-          <div>
-              -1° Helsinki
-          </div>
+          <CityCard />
           <div className="d-flex flex-row w-100 justify-content-evenly">
-              <div>a</div>
-              <div>b</div>
-              <div>c</div>
-              <div>d</div>
+              <HourCard />
+              <HourCard />
+              <HourCard />
+              <HourCard />
+              <HourCard />
+              <HourCard />
+              <HourCard />
+              <HourCard />
           </div>
       </div>
   )

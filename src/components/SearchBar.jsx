@@ -1,6 +1,6 @@
 function SearchBar() {
   return (
-      <div className="d-flex flex-row w-100 justify-content-between">
+      <div id="search-bar" className="d-flex flex-row w-100 justify-content-between">
           <div>
               <input id="search" type="text" placeholder="Search city...."/>
           </div>

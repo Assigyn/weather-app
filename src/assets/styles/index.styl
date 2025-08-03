@@ -5,6 +5,15 @@ body
   margin 0
   color $fontLight
 
+*
+  font-family "Outfit", sans-serif
+  font-optical-sizing auto
+  font-style normal
+
+h2
+ margin-bottom 20px
+ margin-top 48px
+
 .container
   max-width 1350px
   padding 0 20px
@@ -12,6 +21,25 @@ body
 
 .w-100
   width 100% !important
+
+.text
+  &-right
+    text-align right
+  &-center
+    text-align center
+  &-large
+    font-size 1.5rem
+  &-big
+    font-size 1.25rem
+  &-medium
+    font-size 0.875rem
+  &-regular
+    font-size 0.75rem
+  &-bold-medium
+    font-size 1rem
+    font-weight bold
+  &-small
+    font-size 0.625rem
 
 .d
   &-flex
@@ -21,8 +49,89 @@ body
   &-column
     flex-direction column
 
+.flex
+  &-auto
+    flex auto
+
+.align-items
+  &-center
+    align-items center
+
 .justify-content
   &-between
     justify-content space-between
   &-evenly
     justify-content space-evenly
+
+.radius
+  border-radius 20px
+
+.margin
+  &-auto
+    margin auto
+
+.pt
+  &-{8}
+    padding-top 8px
+
+.gap
+  &-{4}
+    gap 4px
+  &-{12}
+    gap 12px
+  &-{24}
+    gap 24px
+  &-{44}
+    gap 44px
+
+
+.bg-gray
+  background-color $greyBg
+
+// Component
+#search-bar
+  margin-top 28px
+  margin-bottom 36px
+  #search
+    background-color $greyBg
+    border-radius 30px
+    border 0
+    padding 16px 24px
+    min-width 240px
+    &::placeholder
+      font-size 1rem
+
+.city-card,
+.location-card
+  padding 20px 24px
+  min-width 340px
+
+.day-card
+  padding 12px 20px
+
+.hour-card
+  width 64px
+  padding 16px 8px
+
+.weather-container
+  height 35px
+  width 35px
+  background-size contain
+  &-snow
+    background-image  url("../../assets/img/13d.png")
+    background-position 50% 50%
+    background-repeat no-repeat
+
+.progress
+  width 535px
+  height 8px
+  border-radius 20px
+  background-color $bgColor
+
+.progress-bar
+  width 135px
+  height 8px
+  border-radius 20px
+  background-color $blueBar
+
+
